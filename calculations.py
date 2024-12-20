@@ -2,11 +2,11 @@ class CostCalculator:
     def __init__(self, db_manager):
         self.db_manager = db_manager
 
-    def calculate(self, span_length, width, traffic_volume, design_life):
-        data = self.db_manager.fetch_all_cost_data()
+    def calculate_costs(self, span_length, width, traffic_volume, design_life):
+        cost_data = self.db_manager.fetch_all_cost_data()
         results = []
 
-        for material, base_rate, maintenance_rate, repair_rate, demolition_rate, env_factor, social_factor, delay_factor in data:
+        for material, base_rate, maintenance_rate, repair_rate, demolition_rate, env_factor, social_factor, delay_factor in cost_data:
             construction_cost = span_length * width * base_rate
             maintenance_cost = span_length * width * maintenance_rate * design_life
             repair_cost = span_length * width * repair_rate
